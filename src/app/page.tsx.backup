@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FiTrendingUp } from 'react-icons/fi';
+import { FiSearch, FiTrendingUp } from 'react-icons/fi';
 
 interface Category {
   design: number;
