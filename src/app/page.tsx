@@ -111,7 +111,7 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white p-4 relative overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-blue-500/10 via-purple-500/5 to-transparent pointer-events-none blur-3xl" />
 
-      <div className="max-w-4xl mx-auto pt-20 relative">
+      <div className="max-w-4xl mx-auto pt-40 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
