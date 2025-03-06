@@ -25,26 +25,28 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<Results | null>(null);
 
-  // 점수에 따른 색상 변경 함수
-  const getScoreColor = (score: number) => {
-    if (score >= 80) return 'from-green-400 to-emerald-500';
-    if (score >= 60) return 'from-blue-400 to-cyan-500';
-    return 'from-orange-400 to-red-500';
-  };
+// 점수에 따른 색상 변경 함수
+const getScoreColor = (score: unknown): string => {
+  const numericScore = Number(score);
+  if (numericScore >= 80) return 'from-green-400 to-emerald-500';
+  if (numericScore >= 60) return 'from-blue-400 to-cyan-500';
+  return 'from-orange-400 to-red-500';
+};
 
 // 여기에 추가
-const getAIAdvice = (categories: any) => {
-  const lowestScore = Math.min(...Object.values(categories));
-  const lowestCategory = Object.entries(categories).find(([_, score]) => score === lowestScore)?.[0];
+const getAIAdvice = (categories: Category) => {
+  const scores = Object.values(categories).map(Number);  // 명시적으로 숫자로 변환
+  const lowestScore = Math.min(...scores);
+  const lowestCategory = Object.entries(categories).find(([_, score]) => Number(score) === lowestScore)?.[0];
   
   const advice = {
     design: "디자인 개선이 가장 시급해요. 최신 트렌드를 참고해보세요! 🎨",
     content: "콘텐츠를 더 매력적으로 만들어보세요. 스토리텔링이 중요해요! 📝",
     features: "편의 기능을 보강해보세요. 고객 경험이 더 좋아질 거예요! ⚡️",
     mobile: "모바일 최적화가 필요해요. 요즘은 모바일이 정말 중요하답니다! 📱"
-  };
+  } as const;
   
-  return advice[lowestCategory as keyof typeof advice];
+  return advice[lowestCategory as keyof typeof advice] || advice.design;
 };
   // 로딩 메시지 배열
   const loadingMessages = [
@@ -163,7 +165,7 @@ const getAIAdvice = (categories: any) => {
               disabled={loading || !url}
               className="absolute right-2 top-1/2 transform -translate-y-1/2 px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full font-medium disabled:opacity-50 flex items-center gap-2"
             >
-            >
+
               {loading ? (
                 <div className="animate-spin h-5 w-5 border-2 border-white rounded-full border-t-transparent" />
               ) : (
