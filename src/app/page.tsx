@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiSearch, FiTrendingUp } from 'react-icons/fi';
 
-// 여기에 인터페이스 추가
 interface Category {
   design: number;
   content: number;
@@ -20,35 +19,32 @@ interface Results {
 }
 
 export default function Home() {
-  // useState 수정
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<Results | null>(null);
 
-// 점수에 따른 색상 변경 함수
-const getScoreColor = (score: unknown): string => {
-  const numericScore = Number(score);
-  if (numericScore >= 80) return 'from-green-400 to-emerald-500';
-  if (numericScore >= 60) return 'from-blue-400 to-cyan-500';
-  return 'from-orange-400 to-red-500';
-};
+  const getScoreColor = (score: unknown): string => {
+    const numericScore = Number(score);
+    if (numericScore >= 80) return 'from-green-400 to-emerald-500';
+    if (numericScore >= 60) return 'from-blue-400 to-cyan-500';
+    return 'from-orange-400 to-red-500';
+  };
 
-// 여기에 추가
-const getAIAdvice = (categories: Category) => {
-  const scores = Object.values(categories).map(Number);  // 명시적으로 숫자로 변환
-  const lowestScore = Math.min(...scores);
-  const lowestCategory = Object.entries(categories).find(([_, score]) => Number(score) === lowestScore)?.[0];
-  
-  const advice = {
-    design: "디자인 개선이 가장 시급해요. 최신 트렌드를 참고해보세요! 🎨",
-    content: "콘텐츠를 더 매력적으로 만들어보세요. 스토리텔링이 중요해요! 📝",
-    features: "편의 기능을 보강해보세요. 고객 경험이 더 좋아질 거예요! ⚡️",
-    mobile: "모바일 최적화가 필요해요. 요즘은 모바일이 정말 중요하답니다! 📱"
-  } as const;
-  
-  return advice[lowestCategory as keyof typeof advice] || advice.design;
-};
-  // 로딩 메시지 배열
+  const getAIAdvice = (categories: Category) => {
+    const scores = Object.values(categories).map(Number);
+    const lowestScore = Math.min(...scores);
+    const lowestCategory = Object.entries(categories).find(([_, score]) => Number(score) === lowestScore)?.[0];
+    
+    const advice = {
+      design: "디자인 개선이 가장 시급해요. 최신 트렌드를 참고해보세요! 🎨",
+      content: "콘텐츠를 더 매력적으로 만들어보세요. 스토리텔링이 중요해요! 📝",
+      features: "편의 기능을 보강해보세요. 고객 경험이 더 좋아질 거예요! ⚡️",
+      mobile: "모바일 최적화가 필요해요. 요즘은 모바일이 정말 중요하답니다! 📱"
+    } as const;
+    
+    return advice[lowestCategory as keyof typeof advice] || advice.design;
+  };
+
   const loadingMessages = [
     "트렌드를 분석하고 있어요 ✨",
     "힙한 요소를 찾고 있어요 🔍",
@@ -61,22 +57,17 @@ const getAIAdvice = (categories: Category) => {
   const analyzeWebsite = async () => {
     setLoading(true);
     
-    // 로딩 메시지 랜덤 변경 인터벌 설정
     const messageInterval = setInterval(() => {
       setLoadingMessage(loadingMessages[Math.floor(Math.random() * loadingMessages.length)]);
     }, 2000);
     
-    // 랜덤한 연도 생성 (2016-2023)
     const randomYear = Math.floor(Math.random() * (2023 - 2016 + 1)) + 2016;
-    
-    // 랜덤한 점수 생성 (30-95)
     const getRandomScore = () => Math.floor(Math.random() * (95 - 30 + 1)) + 30;
 
-    // 다양한 추천 메시지
     const allRecommendations = [
       "스크롤 애니메이션 기능을 추가해보세요!",
       "최신 UI 트렌드인 뉴모피즘을 적용해보세요!",
-      "인스타그램 쇼핑 기능 연동을 추천드려요1",
+      "인스타그램 쇼핑 기능 연동을 추천드려요!",
       "모바일 최적화가 필요해 보여요!",
       "AI 챗봇 도입을 고려해보세요!",
       "다크모드 지원을 추가해보세요!",
@@ -96,7 +87,6 @@ const getAIAdvice = (categories: Category) => {
       "그리드 시스템을 더 체계적으로 정리해보세요!"
     ];
 
-    // 랜덤하게 3-4개의 추천 메시지 선택
     const shuffled = allRecommendations.sort(() => 0.5 - Math.random());
     const selectedRecommendations = shuffled.slice(0, Math.random() < 0.5 ? 3 : 4);
 
@@ -116,13 +106,12 @@ const getAIAdvice = (categories: Category) => {
       setLoading(false);
     }, 2000);
   };
+
   return (
     <main className="min-h-screen bg-black text-white p-4 relative overflow-hidden">
-      {/* 인터랙티브 배경 효과 */}
       <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-blue-500/10 via-purple-500/5 to-transparent pointer-events-none blur-3xl"></div>
 
       <div className="max-w-4xl mx-auto pt-20 relative">
-        {/* 헤더 섹션 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -139,7 +128,6 @@ const getAIAdvice = (categories: Category) => {
           </p>
         </motion.div>
 
-        {/* 입력 섹션 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -147,7 +135,6 @@ const getAIAdvice = (categories: Category) => {
           className="mb-12"
         >
           <div className="relative">
-            {/* 이 input 태그를 새로운 코드로 교체 */}
             <input
               type="text"
               value={url}
@@ -176,7 +163,6 @@ const getAIAdvice = (categories: Category) => {
             </button>
           </div>
           
-          {/* 로딩 메시지 */}
           {loading && (
             <motion.p
               initial={{ opacity: 0 }}
@@ -188,7 +174,6 @@ const getAIAdvice = (categories: Category) => {
           )}
         </motion.div>
 
-        {/* 결과 섹션 */}
         {results && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -205,14 +190,14 @@ const getAIAdvice = (categories: Category) => {
                 {results.year}년 감성
               </div>
               <p className="text-gray-400 text-lg">
-  {new Date().getFullYear() - results.year === 0 
-    ? "🎉 축하드려요! 현재 트렌드와 완벽하게 일치해요 ✨"
-    : new Date().getFullYear() - results.year <= 2 
-    ? `⭐️ 트렌드와 ${new Date().getFullYear() - results.year}년 차이로 꽤 힙한 감성이에요!`
-    : new Date().getFullYear() - results.year <= 4 
-    ? `💫 트렌드와 ${new Date().getFullYear() - results.year}년의 갭이 있어요. 조금만 더 업데이트해볼까요?`
-    : `✨ 트렌드와 ${new Date().getFullYear() - results.year}년의 차이가 있네요! 새로운 변화를 시작해보세요`}
-</p>
+                {new Date().getFullYear() - results.year === 0 
+                  ? "🎉 축하드려요! 현재 트렌드와 완벽하게 일치해요 ✨"
+                  : new Date().getFullYear() - results.year <= 2 
+                  ? `⭐️ 트렌드와 ${new Date().getFullYear() - results.year}년 차이로 꽤 힙한 감성이에요!`
+                  : new Date().getFullYear() - results.year <= 4 
+                  ? `💫 트렌드와 ${new Date().getFullYear() - results.year}년의 갭이 있어요. 조금만 더 업데이트해볼까요?`
+                  : `✨ 트렌드와 ${new Date().getFullYear() - results.year}년의 차이가 있네요! 새로운 변화를 시작해보세요`}
+              </p>
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-8">
@@ -239,6 +224,7 @@ const getAIAdvice = (categories: Category) => {
                 </motion.div>
               ))}
             </div>
+
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -268,7 +254,6 @@ const getAIAdvice = (categories: Category) => {
               </ul>
             </div>
 
-            {/* 추천 버튼 섹션 */}
             <div className="mt-8 space-y-4">
               <p className="text-gray-400 text-lg text-center mb-6">더 멋진 쇼핑몰을 만들어보세요 ✨</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
