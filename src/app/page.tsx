@@ -165,7 +165,6 @@ const getAIAdvice = (categories: Category) => {
               disabled={loading || !url}
               className="absolute right-2 top-1/2 transform -translate-y-1/2 px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full font-medium disabled:opacity-50 flex items-center gap-2"
             >
-
               {loading ? (
                 <div className="animate-spin h-5 w-5 border-2 border-white rounded-full border-t-transparent" />
               ) : (
