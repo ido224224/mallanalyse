@@ -188,16 +188,16 @@ const getAIAdvice = (categories: any) => {
                 {results.year}년 감성
               </div>
               <p className="text-gray-400 text-lg">
-                {new Date().getFullYear() - results.year === 0 ? (
-                  "🎉 축하드려요! 현재 트렌드와 완벽하게 일치해요 ✨"
-                ) : new Date().getFullYear() - results.year <= 2 ? (
-                  `⭐️ 트렌드와 ${new Date().getFullYear() - results.year}년 차이로 꽤 힙한 감성이에요!`
-                ) : new Date().getFullYear() - results.year <= 4 ? (
-                  `💫 트렌드와 ${new Date().getFullYear() - results.year}년의 갭이 있어요. 조금만 더 업데이트해볼까요?`
-                ) : (
-                  `✨ 트렌드와 ${new Date().getFullYear() - results.year}년의 차이가 있네요! 새로운 변화를 시작해보세요`
-                )}
-              </p>
+  {new Date().getFullYear() - results.year === 0 ? (
+    "🎉 축하드려요! 현재 트렌드와 완벽하게 일치해요 ✨"
+  ) : new Date().getFullYear() - results.year <= 2 ? (
+    `⭐️ 트렌드와 ${new Date().getFullYear() - results.year}년 차이로 꽤 힙한 감성이에요!`
+  ) : new Date().getFullYear() - results.year <= 4 ? (
+    `💫 트렌드와 ${new Date().getFullYear() - results.year}년의 갭이 있어요. 조금만 더 업데이트해볼까요?`
+  ) : (
+    `✨ 트렌드와 ${new Date().getFullYear() - results.year}년의 차이가 있네요! 새로운 변화를 시작해보세요`
+  )}
+</p>
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-8">
