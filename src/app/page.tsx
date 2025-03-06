@@ -4,10 +4,26 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FiSearch, FiTrendingUp } from 'react-icons/fi';
 
+// 여기에 인터페이스 추가
+interface Category {
+  design: number;
+  content: number;
+  features: number;
+  mobile: number;
+}
+
+interface Results {
+  year: number;
+  score: number;
+  categories: Category;
+  recommendations: string[];
+}
+
 export default function Home() {
+  // useState 수정
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<Results | null>(null);
 
   // 점수에 따른 색상 변경 함수
   const getScoreColor = (score: number) => {
