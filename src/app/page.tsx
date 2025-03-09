@@ -109,9 +109,9 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-black text-white p-4 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-blue-500/10 via-purple-500/5 to-transparent pointer-events-none blur-3xl" />
+      <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-blue-500/10 via-purple-500/5 to-transparent pointer-events-none blur-3xl"></div>
 
-      <div className="max-w-4xl mx-auto pt-60 relative">
+      <div className="max-w-4xl mx-auto pt-20 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -162,6 +162,7 @@ export default function Home() {
               )}
             </button>
           </div>
+          
           {loading && (
             <motion.p
               initial={{ opacity: 0 }}
@@ -172,7 +173,118 @@ export default function Home() {
             </motion.p>
           )}
         </motion.div>
+        {!loading && !results && (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.3, duration: 0.6 }}
+  >
+    {/* 사용 방법 섹션 */}
+    <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 mb-8 shadow-xl border border-gray-800">
+    <h3 className="text-xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
+  ✨ 이렇게 사용해보세요
+</h3>
+      <div className="grid md:grid-cols-3 gap-6">
+        <motion.div 
+          whileHover={{ scale: 1.02 }}
+          className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50 hover:border-blue-500/50 transition-all"
+        >
+          <div className="text-lg mb-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-lg">
+            1
+          </div>
+          <h4 className="font-medium mb-2 text-blue-400">URL 입력</h4>
+          <p className="text-gray-400">분석하고 싶은 쇼핑몰의 주소를 입력해주세요.</p>
+        </motion.div>
+        
+        <motion.div 
+          whileHover={{ scale: 1.02 }}
+          className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50 hover:border-purple-500/50 transition-all"
+        >
+          <div className="text-lg mb-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-lg">
+            2
+          </div>
+          <h4 className="font-medium mb-2 text-purple-400">AI 분석</h4>
+          <p className="text-gray-400">AI가 쇼핑몰의 트렌드 점수를 분석해드려요.</p>
+        </motion.div>
+        
+        <motion.div 
+          whileHover={{ scale: 1.02 }}
+          className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50 hover:border-cyan-500/50 transition-all"
+        >
+          <div className="text-lg mb-4 bg-gradient-to-r from-cyan-500 to-teal-500 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-lg">
+            3
+          </div>
+          <h4 className="font-medium mb-2 text-cyan-400">맞춤 추천</h4>
+          <p className="text-gray-400">트렌드에 맞는 개선 방향을 추천받으세요.</p>
+        </motion.div>
+      </div>
+    </div>
 
+    {/* 트렌드 섹션 */}
+    <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 shadow-xl border border-gray-800">
+      <h3 className="text-xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
+        🔥 2024 쇼핑몰 트렌드
+      </h3>
+      <div className="grid md:grid-cols-2 gap-6">
+        <motion.div 
+          whileHover={{ scale: 1.02 }}
+          className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50 hover:border-purple-500/50 transition-all"
+        >
+          <h4 className="font-medium mb-4 text-purple-400 flex items-center gap-2">
+            <span>💫</span>
+            2024 트렌드 키워드
+          </h4>
+          <ul className="space-y-3">
+            <motion.li className="flex items-center gap-2 text-gray-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-purple-400"></span>
+              미니멀한 UI/UX 디자인
+            </motion.li>
+            <motion.li className="flex items-center gap-2 text-gray-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-purple-400"></span>
+              AI 기반 개인화 추천
+            </motion.li>
+            <motion.li className="flex items-center gap-2 text-gray-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-purple-400"></span>
+              라이브 커머스 활성화
+            </motion.li>
+            <motion.li className="flex items-center gap-2 text-gray-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-purple-400"></span>
+              모바일 최적화 강화
+            </motion.li>
+          </ul>
+        </motion.div>
+        
+        <motion.div 
+          whileHover={{ scale: 1.02 }}
+          className="bg-gray-800/50 p-6 rounded-xl border border-gray-700/50 hover:border-pink-500/50 transition-all"
+        >
+          <h4 className="font-medium mb-4 text-pink-400 flex items-center gap-2">
+            <span>⚡️</span>
+            필수 도입 기능
+          </h4>
+          <ul className="space-y-3">
+            <motion.li className="flex items-center gap-2 text-gray-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-pink-400"></span>
+              AR 가상 피팅/배치
+            </motion.li>
+            <motion.li className="flex items-center gap-2 text-gray-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-pink-400"></span>
+              AI 챗봇 고객 상담
+            </motion.li>
+            <motion.li className="flex items-center gap-2 text-gray-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-pink-400"></span>
+              간편 결제 시스템
+            </motion.li>
+            <motion.li className="flex items-center gap-2 text-gray-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-pink-400"></span>
+              실시간 재고 관리
+            </motion.li>
+          </ul>
+        </motion.div>
+      </div>
+    </div>
+  </motion.div>
+)}
         {results && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -262,7 +374,7 @@ export default function Home() {
                   rel="noopener noreferrer" 
                   className="group relative px-6 py-3 rounded-lg text-center overflow-hidden transition-all duration-300"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-500 opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-500 opacity-80 group-hover:opacity-100 transition-opacity"></div>
                   <div className="relative flex items-center justify-center gap-2 text-white font-medium">
                     <span className="text-xl">🚀</span>
                     <span>쇼핑몰 필수 앱 둘러보기</span>
@@ -274,7 +386,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="group relative px-6 py-3 rounded-lg text-center overflow-hidden transition-all duration-300"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 via-purple-500 to-pink-500 opacity-80 group-hover:opacity-100 transition-opacity"></div>
                   <div className="relative flex items-center justify-center gap-2 text-white font-medium">
                     <span className="text-xl">💫</span>
                     <span>트렌디한 디자인 찾아보기</span>
@@ -286,7 +398,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="group relative px-6 py-3 rounded-lg text-center overflow-hidden transition-all duration-300"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-teal-400 via-emerald-500 to-cyan-500 opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-teal-400 via-emerald-500 to-cyan-500 opacity-80 group-hover:opacity-100 transition-opacity"></div>
                   <div className="relative flex items-center justify-center gap-2 text-white font-medium">
                     <span className="text-xl">👨‍💻</span>
                     <span>전문가와 함께 시작하기</span>
