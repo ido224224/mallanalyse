@@ -223,7 +223,7 @@ export default function Home() {
     {/* 트렌드 섹션 */}
     <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 shadow-xl border border-gray-800">
       <h3 className="text-xl font-bold mb-8 bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
-        🔥 2024 쇼핑몰 트렌드
+        🔥 2025 쇼핑몰 트렌드
       </h3>
       <div className="grid md:grid-cols-2 gap-6">
         <motion.div 
@@ -232,7 +232,7 @@ export default function Home() {
         >
           <h4 className="font-medium mb-4 text-purple-400 flex items-center gap-2">
             <span>💫</span>
-            2024 트렌드 키워드
+            2025 트렌드 키워드
           </h4>
           <ul className="space-y-3">
             <motion.li className="flex items-center gap-2 text-gray-400">
